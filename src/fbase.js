@@ -1,6 +1,9 @@
 import firebase from "firebase/app";
+import "firebase/auth";
+import "firebase/firebase";
 
 require("dotenv").config();
+// babel 없을 경우 위와 같은 문법으로 dotenv 하는듯
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -14,4 +17,8 @@ const firebaseConfig = {
 };
 console.log(firebaseConfig);
 
-export default firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
+
+export const firebaseInstance = firebase;
+export const authService = firebase.auth();
+export const dbService = firebase.firestore();
